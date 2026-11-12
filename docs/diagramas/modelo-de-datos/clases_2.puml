@@ -1,0 +1,87 @@
+@startuml
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam defaultFontSize 13
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 70
+skinparam class {
+ BackgroundColor white
+ BorderColor black
+ ArrowColor black
+}
+hide circle
+class Usuario
+hide Usuario members
+class Integrante
+hide Integrante members
+class TipoAyuda {
+  - idTipoAyuda: int
+  - nombre: String
+  - unidadMedida: String
+  - activo: boolean
+  --
+  + crear(t: TipoAyuda): void
+  + existeNombre(nombre: String): boolean
+  + listarActivos(): List<TipoAyuda>
+  + existencias(): int
+  + hayExistencias(cantidad: int): boolean
+  + actualizar(t: TipoAyuda): void
+  + inactivar(idTipoAyuda: int): void
+}
+class Donacion {
+  - idDonacion: int
+  - cantidad: int
+  - origen: String
+  - fechaRecepcion: LocalDateTime
+  --
+  + registrar(d: Donacion): void
+  + listarPorTipo(idTipoAyuda: int): List<Donacion>
+}
+class Entrega {
+  - idEntrega: int
+  - cantidad: int
+  - fechaHora: LocalDateTime
+  - firmaBeneficiario: String
+  --
+  + registrar(e: Entrega): void
+  + capturarFirma(firma: String): void
+  + listarPorHogar(idHogar: int): List<Entrega>
+  + listarPorTipo(idTipoAyuda: int): List<Entrega>
+}
+class Voluntario {
+  - idVoluntario: int
+  - tipoDocumento: TipoDocumento
+  - numeroDocumento: String
+  - nombres: String
+  - apellidos: String
+  - telefono: String
+  - activo: boolean
+  --
+  + crear(v: Voluntario): void
+  + listarActivos(): List<Voluntario>
+  + actualizar(v: Voluntario): void
+  + inactivar(idVoluntario: int): void
+}
+TipoAyuda "1" -- "0..*" Donacion : ingresa
+TipoAyuda "1" -- "0..*" Entrega : sale
+Integrante "1" -- "0..*" Entrega : recibe
+Usuario "1" -- "0..*" Donacion : registra
+Usuario "1" -- "0..*" Entrega : entrega
+Usuario "1" -- "0..*" Voluntario : registra
+enum TipoDocumento <<enumeration>> {
+  RC
+  TI
+  CC
+  CE
+  PA
+  PPT
+}
+Voluntario ..> TipoDocumento
+@enduml

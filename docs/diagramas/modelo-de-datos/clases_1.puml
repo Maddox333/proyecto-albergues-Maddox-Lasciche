@@ -1,0 +1,132 @@
+@startuml
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam defaultFontSize 13
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 70
+skinparam ranksep 70
+skinparam class {
+ BackgroundColor white
+ BorderColor black
+ ArrowColor black
+}
+hide circle
+class Usuario {
+  - idUsuario: int
+  - nombreCompleto: String
+  - nombreUsuario: String
+  - claveHash: String
+  - rol: Rol
+  - activo: boolean
+  --
+  + autenticar(nombreUsuario: String, clave: String): Usuario
+  + tienePermiso(funcion: String): boolean
+  + crear(u: Usuario): void
+  + existeNombreUsuario(nombreUsuario: String): boolean
+  + listarActivos(): List<Usuario>
+  + actualizar(u: Usuario): void
+  + inactivar(idUsuario: int): void
+}
+class Hogar {
+  - idHogar: int
+  - direccion: String
+  - barrio: String
+  - municipio: String
+  - telefonoContacto: String
+  - fechaRegistro: LocalDateTime
+  - estadoSincronizacion: EstadoSincronizacion
+  - activo: boolean
+  --
+  + crear(h: Hogar): void
+  + buscarPorDocumento(tipo: TipoDocumento, numero: String): Hogar
+  + actualizar(h: Hogar): void
+  + inactivar(idHogar: int): void
+  + totalIntegrantes(): int
+  + guardarLocal(h: Hogar): void
+  + contarPorEstado(estado: EstadoSincronizacion): int
+  + sincronizarPendientes(): void
+}
+class Integrante {
+  - idIntegrante: int
+  - tipoDocumento: TipoDocumento
+  - numeroDocumento: String
+  - nombres: String
+  - apellidos: String
+  - fechaNacimiento: LocalDate
+  - condiciones: List<CondicionDiferencial>
+  - activo: boolean
+  --
+  + crear(i: Integrante): void
+  + existeDocumento(tipo: TipoDocumento, numero: String): boolean
+  + buscarPorDocumento(tipo: TipoDocumento, numero: String): Integrante
+  + actualizar(i: Integrante): void
+  + asignarCondiciones(condiciones: List<CondicionDiferencial>): void
+  + inactivar(idIntegrante: int): void
+}
+class Albergue {
+  - idAlbergue: int
+  - nombre: String
+  - direccion: String
+  - municipio: String
+  - capacidadMaxima: int
+  - activo: boolean
+  --
+  + crear(a: Albergue): void
+  + listarActivos(): List<Albergue>
+  + ocupacionActual(): int
+  + cuposDisponibles(): int
+  + actualizar(a: Albergue): void
+  + inactivar(idAlbergue: int): void
+}
+class AsignacionAlbergue {
+  - idAsignacion: int
+  - fechaIngreso: LocalDateTime
+  - fechaSalida: LocalDateTime
+  --
+  + asignar(idHogar: int, idAlbergue: int): void
+  + registrarSalida(idHogar: int, idAlbergue: int): void
+  + albergueActual(idHogar: int): Albergue
+}
+Hogar "1" *-- "1..*" Integrante : tiene
+Hogar "1" -- "0..*" AsignacionAlbergue : se aloja
+Albergue "1" -- "0..*" AsignacionAlbergue : recibe
+Usuario "1" -- "0..*" Hogar : registra
+Usuario "1" -- "0..*" AsignacionAlbergue : asigna
+Usuario "0..1" -- "0..*" AsignacionAlbergue : registra salida
+Albergue "0..1" -- "0..*" Usuario : coordina
+enum Rol <<enumeration>> {
+  FUNCIONARIO
+  COORDINADOR
+  ADMINISTRADOR
+}
+enum TipoDocumento <<enumeration>> {
+  RC
+  TI
+  CC
+  CE
+  PA
+  PPT
+}
+enum CondicionDiferencial <<enumeration>> {
+  NINO
+  ADULTO_MAYOR
+  DISCAPACIDAD
+  GESTANTE
+  MINORIA_ETNICA
+}
+enum EstadoSincronizacion <<enumeration>> {
+  SINCRONIZADO
+  PENDIENTE
+  CONFLICTO
+}
+Usuario ..> Rol
+Integrante ..> TipoDocumento
+Integrante ..> CondicionDiferencial
+Hogar ..> EstadoSincronizacion
+@enduml

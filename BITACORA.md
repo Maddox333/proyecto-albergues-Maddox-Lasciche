@@ -213,3 +213,27 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Entreg
 
 ---
 
+## Entrada #13 · Semana 13 (26 oct – 31 oct de 2026)
+
+**Commit:** Corrección 1: diccionario de datos en 3FN, MER y diagrama de clases
+
+**¿Qué hice?**
+- Fase 0: Concepción: 1.7 Aplicación del formulario en Microsoft Forms y recolección de respuestas (1 h presenciales + 2 h autónomas).
+- Fase 0: Concepción: Corrección prioritaria 1: 1.8 diccionario de datos en 3FN, MER y diagrama de clases (3 h presenciales + 6 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Retroalimentación recibida (semáforo rojo).
+
+**Artefactos del commit:**
+- `docs/fase0-concepcion/06-modelo-de-datos.md`
+- `docs/diagramas/modelo-de-datos/`
+
+**¿Qué problema encontré?**
+La retroalimentación del 25 de octubre calificó en rojo el modelo de datos, la trazabilidad de las historias y el análisis de la entrevista.
+
+**¿Cómo lo resolví?**
+Se priorizaron tres correcciones. La primera fue construir el diccionario de datos en 3FN, el MER y el diagrama de clases, porque las historias se amarran a sus métodos.
+
+**¿Usé IA?** Sí. Se usó Claude (Anthropic) como apoyo para redactar, generar diagramas y código desde el modelo, y verificar la trazabilidad; el autor revisó y ajustó cada artefacto.
+
+---
+

@@ -1,0 +1,127 @@
+@startuml
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+hide circle
+hide methods
+skinparam linetype ortho
+skinparam nodesep 60
+skinparam ranksep 60
+skinparam class {
+ BackgroundColor white
+ BorderColor black
+ ArrowColor black
+}
+entity USUARIO {
+  * id_usuario : INT <<PK>>
+  --
+  * nombre_completo : VARCHAR
+  * nombre_usuario : VARCHAR
+  * clave_hash : VARCHAR
+  * rol : ENUM
+  id_albergue : INT <<FK>>
+  * activo : BOOLEAN
+}
+entity HOGAR {
+  * id_hogar : INT <<PK>>
+  --
+  * direccion : VARCHAR
+  * barrio : VARCHAR
+  * municipio : VARCHAR
+  telefono_contacto : VARCHAR
+  * fecha_registro : DATETIME
+  * estado_sincronizacion : ENUM
+  * id_usuario_registro : INT <<FK>>
+  * activo : BOOLEAN
+}
+entity INTEGRANTE {
+  * id_integrante : INT <<PK>>
+  --
+  * id_hogar : INT <<FK>>
+  * tipo_documento : ENUM
+  * numero_documento : VARCHAR
+  * nombres : VARCHAR
+  * apellidos : VARCHAR
+  * fecha_nacimiento : DATE
+  * activo : BOOLEAN
+}
+entity INTEGRANTE_CONDICION {
+  * id_integrante : INT <<PK>> <<FK>>
+  * condicion : ENUM <<PK>>
+  --
+}
+entity ALBERGUE {
+  * id_albergue : INT <<PK>>
+  --
+  * nombre : VARCHAR
+  * direccion : VARCHAR
+  * municipio : VARCHAR
+  * capacidad_maxima : INT
+  * activo : BOOLEAN
+}
+entity ASIGNACION_ALBERGUE {
+  * id_asignacion : INT <<PK>>
+  --
+  * id_hogar : INT <<FK>>
+  * id_albergue : INT <<FK>>
+  * fecha_ingreso : DATETIME
+  fecha_salida : DATETIME
+  * id_usuario_asigna : INT <<FK>>
+  id_usuario_salida : INT <<FK>>
+}
+entity TIPO_AYUDA {
+  * id_tipo_ayuda : INT <<PK>>
+  --
+  * nombre : VARCHAR
+  * unidad_medida : VARCHAR
+  * activo : BOOLEAN
+}
+entity DONACION {
+  * id_donacion : INT <<PK>>
+  --
+  * id_tipo_ayuda : INT <<FK>>
+  * cantidad : INT
+  * origen : VARCHAR
+  * fecha_recepcion : DATETIME
+  * id_usuario_registro : INT <<FK>>
+}
+entity ENTREGA {
+  * id_entrega : INT <<PK>>
+  --
+  * id_integrante : INT <<FK>>
+  * id_tipo_ayuda : INT <<FK>>
+  * cantidad : INT
+  * fecha_hora : DATETIME
+  * firma_beneficiario : TEXT
+  * id_usuario_responsable : INT <<FK>>
+}
+entity VOLUNTARIO {
+  * id_voluntario : INT <<PK>>
+  --
+  * tipo_documento : ENUM
+  * numero_documento : VARCHAR
+  * nombres : VARCHAR
+  * apellidos : VARCHAR
+  * telefono : VARCHAR
+  * id_usuario_registro : INT <<FK>>
+  * activo : BOOLEAN
+}
+USUARIO ||--o{ HOGAR : registra
+HOGAR ||--|{ INTEGRANTE : tiene
+INTEGRANTE ||--o{ INTEGRANTE_CONDICION : presenta
+HOGAR ||--o{ ASIGNACION_ALBERGUE : se aloja
+ALBERGUE ||--o{ ASIGNACION_ALBERGUE : recibe
+ALBERGUE |o--o{ USUARIO : coordina
+USUARIO ||--o{ ASIGNACION_ALBERGUE : asigna
+USUARIO |o--o{ ASIGNACION_ALBERGUE : registra salida
+TIPO_AYUDA ||--o{ DONACION : ingresa
+TIPO_AYUDA ||--o{ ENTREGA : sale
+INTEGRANTE ||--o{ ENTREGA : recibe
+USUARIO ||--o{ DONACION : registra
+USUARIO ||--o{ ENTREGA : entrega
+USUARIO ||--o{ VOLUNTARIO : registra
+@enduml
