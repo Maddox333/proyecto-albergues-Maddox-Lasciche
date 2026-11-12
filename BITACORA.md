@@ -148,3 +148,20 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #09 · Semana 09 (28 sep – 3 oct de 2026)
+
+**Commit:** Fase 1: modelo general de casos de uso y casos críticos
+
+**¿Qué hice?**
+- Fase 1: Análisis: 2.3 Modelo general de casos de uso (2 h presenciales + 4 h autónomas).
+- Fase 1: Análisis: 2.4 Documentación de los casos de uso críticos (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase1-analisis/03-casos-de-uso.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
