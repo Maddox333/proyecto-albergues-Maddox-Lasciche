@@ -1,0 +1,25 @@
+# Compilación
+target/
+out/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+nbproject/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Bases de datos locales y registros
+*.mv.db
+*.trace.db
+*.log
+
+# Archivos temporales de Office
+~$*
