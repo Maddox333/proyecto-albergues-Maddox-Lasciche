@@ -114,3 +114,20 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #07 · Semana 07 (14 sep – 19 sep de 2026)
+
+**Commit:** Fase 1: requisitos funcionales y reglas de negocio
+
+**¿Qué hice?**
+- Fase 1: Análisis: 2.2 Reglas de negocio derivadas de los criterios de rechazo (2 h presenciales + 4 h autónomas).
+- Fase 1: Análisis: 2.2 Requisitos funcionales (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase1-analisis/02-reglas-y-requisitos.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
