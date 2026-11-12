@@ -197,3 +197,19 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #12 · Semana 12 (19 oct – 24 oct de 2026)
+
+**Commit:** Fases 0 y 1: entrega parcial
+
+**¿Qué hice?**
+- Fase 1: Análisis: Ajuste final y entrega parcial de las Fases 0 y 1 (4 h presenciales + 8 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Entrega parcial de las Fases 0 y 1 (revisada por la docente el 25 de octubre).
+
+**Artefactos del commit:**
+- `docs/entregas/v0.2_Documento_Fases_0_y_1.docx`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
