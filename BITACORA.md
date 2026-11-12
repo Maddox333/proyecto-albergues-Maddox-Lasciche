@@ -181,3 +181,19 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #11 · Semana 11 (12 oct – 17 oct de 2026)
+
+**Commit:** Fases 0 y 1: integración del documento
+
+**¿Qué hice?**
+- Fase 1: Análisis: Integración del documento de las Fases 0 y 1 y revisión de forma (4 h presenciales + 8 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/entregas/v0.2_Documento_Fase_1.docx`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
