@@ -98,3 +98,19 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #06 · Semana 06 (7 sep – 12 sep de 2026)
+
+**Commit:** Fase 1: fichas y criterios de aceptación de las historias de usuario
+
+**¿Qué hice?**
+- Fase 1: Análisis: 2.1 Criterios de aceptación de las HU (éxito y rechazo) (4 h presenciales + 8 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase1-analisis/01-historias-de-usuario.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
