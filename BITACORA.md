@@ -46,3 +46,21 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #03 · Semana 03 (17 ago – 22 ago de 2026)
+
+**Commit:** Fase 0: marco teórico, metodología y diseño del guion de entrevista
+
+**¿Qué hice?**
+- Fase 0: Concepción: 1.5 Marco teórico (conceptual y normativo) (2 h presenciales + 4 h autónomas).
+- Fase 0: Concepción: 1.6 Metodología y 1.7 diseño del guion de entrevista (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase0-concepcion/04-marco-teorico.md`
+- `docs/fase0-concepcion/05-metodologia-y-recoleccion.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
