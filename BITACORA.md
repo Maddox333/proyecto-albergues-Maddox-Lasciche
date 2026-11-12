@@ -64,3 +64,21 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #04 · Semana 04 (24 ago – 29 ago de 2026)
+
+**Commit:** Fase 0: cronograma y entrega del documento de la Fase 0
+
+**¿Qué hice?**
+- Fase 0: Concepción: 1.7 Revisión de las preguntas del guion (12 preguntas cerradas) (2 h presenciales + 4 h autónomas).
+- Fase 0: Concepción: 1.9 Cronograma de trabajo (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Documento de la Fase 0.
+
+**Artefactos del commit:**
+- `docs/fase0-concepcion/07-cronograma.md`
+- `docs/entregas/v0.1_Documento_Fase_0.docx`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
