@@ -82,3 +82,19 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Docume
 
 ---
 
+## Entrada #05 · Semana 05 (31 ago – 5 sep de 2026)
+
+**Commit:** Fase 1: actores y lista de historias de usuario
+
+**¿Qué hice?**
+- Fase 1: Análisis: 2.1 Historias de usuario: identificación de actores y lista de HU (4 h presenciales + 8 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase1-analisis/01-historias-de-usuario.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
