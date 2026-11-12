@@ -432,3 +432,70 @@
 > **Regla:** Ninguna sincronización pierde ni duplica registros; un registro cuyo documento ya existe en el sistema central queda en conflicto para revisión (resolución: V-12).
 >
 > **Origen:** HU-11 / CA-11.2, CA-11.3
+
+
+# 6. Requisitos No Funcionales
+
+**RNF-01 — Autenticación y control de acceso por roles**
+
+> **Categoría:** Seguridad
+>
+> **Descripción:** El acceso al sistema requiere autenticación, y la información sensible de las familias afectadas solo es accesible a los roles autorizados.
+>
+> **Origen:** Fase 0 (objetivo general, control de acceso por roles); HU-01 / CA-01.4; HU-03
+
+**RNF-02 — Protección de datos personales**
+
+> **Categoría:** Seguridad
+>
+> **Descripción:** El tratamiento de datos personales debe alinearse con la Ley 1581 de 2012 y el Decreto 1377 de 2013 (Habeas Data).
+>
+> **Origen:** Fase 0 (Supuestos y restricciones; 0.3.3 Marco normativo)
+
+**RNF-04 — Trazabilidad y auditoría de operaciones**
+
+> **Categoría:** Integridad
+>
+> **Descripción:** Cada operación del sistema debe quedar registrada de forma auditable (qué, quién, cuándo), para la rendición de cuentas sobre recursos públicos y donaciones (Ley 1712 de 2014).
+>
+> **Origen:** Fase 0 (objetivo general, obj. específico 3, causas, 0.3.3); HU-19 / CA-19.1
+
+**RNF-05 — Unicidad e integridad de los datos**
+
+> **Categoría:** Integridad
+>
+> **Descripción:** El sistema debe garantizar la unicidad del registro de personas y familias y la integridad del inventario (existencias coherentes con donaciones y entregas).
+>
+> **Origen:** Fase 0 (obj. específico 2); HU-06; HU-20 / CA-20.1, CA-20.2
+
+**RNF-07 — Operación sin conexión**
+
+> **Categoría:** Disponibilidad
+>
+> **Descripción:** El registro de hogares e integrantes debe poder operar sin conexión a internet, con sincronización diferida.
+>
+> **Origen:** Fase 0 (Alcance, 0.4 pregunta 11); HU-10 / CA-10.1
+
+**RNF-08 — Sincronización confiable**
+
+> **Categoría:** Confiabilidad
+>
+> **Descripción:** La sincronización debe tolerar interrupciones de conexión sin pérdida ni duplicación de registros.
+>
+> **Origen:** HU-11 / CA-11.3
+
+**RNF-09 — Acceso web y móvil por navegador, solución liviana**
+
+> **Categoría:** Compatibilidad
+>
+> **Descripción:** El sistema debe ser una solución web/móvil usable desde el navegador de dispositivos móviles del personal en campo, de operación liviana.
+>
+> **Origen:** Fase 0 (Alcance, Supuestos, 0.3.1 aportes distintivos)
+
+**RNF-10 — Mensajes de rechazo claros**
+
+> **Categoría:** Usabilidad
+>
+> **Descripción:** Todo rechazo debe mostrar un mensaje que indique el motivo y, cuando aplique, el dato faltante o el formato esperado.
+>
+> **Origen:** HU-01 / CA-01.3; HU-05 / CA-05.3; HU-12 / CA-12.2; HU-13 / CA-13.2 (patrón común en los CA de rechazo)
