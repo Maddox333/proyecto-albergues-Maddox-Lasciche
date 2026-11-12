@@ -74,3 +74,17 @@
 | RNF-08  | Confiabilidad  | HU-11 / CA-11.3                                               |
 | RNF-09  | Compatibilidad | Fase 0 (Alcance, Supuestos, 0.3.1 aportes distintivos)        |
 | RNF-10  | Usabilidad     | CA de rechazo de HU-01, HU-05, HU-12, HU-13                   |
+
+
+# 10. Revisión de requisitos huérfanos
+
+| **Control**                                | **Resultado**                                                                                                                                                               |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1\. Todo RF tiene HU y CA de origen        | Cumple para RF-01 a RF-34; cada RF conserva origen explícito en HU/CA.                                                                                                      |
+| 2\. RF huérfanos                           | Ninguno en el baseline depurado.                                                                                                                                            |
+| 3\. Toda RN tiene origen                   | Cumple para RN-01 a RN-26; cada RN conserva HU/CA y/o Fase 0.                                                                                                               |
+| 4\. Toda RN tiene RF o mecanismo funcional | Cumple para RN-01 a RN-26.                                                                                                                                                  |
+| 5\. RN sin mecanismo identificado          | Ninguna en el baseline depurado; RN-27 fue retirada junto con HU-25 por falta de fundamento funcional suficiente.                                                           |
+| 6\. Todo RNF tiene fundamento              | Cumple para los RNF conservados; se retiraron RNF que no tenían naturaleza de requisito del producto o dependían de elementos sin CA.                                       |
+| 7\. Funcionalidad fuera del alcance        | No se agregaron funcionalidades fuera de la Fase 0. Se mantiene la exclusión de conexión en tiempo real con el RUD, transferencias monetarias, IoT y evaluaciones técnicas. |
+| 8\. Trazabilidad inversa                   | Cada RF/RN/RNF conservado puede rastrearse hacia HU/CA y, cuando corresponde, hacia Fase 0.                                                                                 |

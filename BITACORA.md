@@ -165,3 +165,19 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #10 · Semana 10 (5 oct – 10 oct de 2026)
+
+**Commit:** Fase 1: revisión cruzada HU–RF–RN–CU y requisitos huérfanos
+
+**¿Qué hice?**
+- Fase 1: Análisis: Revisión cruzada HU–RF–RN–CU y depuración de la línea base (4 h presenciales + 8 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/trazabilidad/01-matriz-fases-0-y-1.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
