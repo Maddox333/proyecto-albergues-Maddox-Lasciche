@@ -28,3 +28,21 @@ Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
 
 ---
 
+## Entrada #02 · Semana 02 (10 ago – 15 ago de 2026)
+
+**Commit:** Fase 0: objetivos y estado del arte
+
+**¿Qué hice?**
+- Fase 0: Concepción: 1.3 Objetivo general y objetivos específicos (2 h presenciales + 2 h autónomas).
+- Fase 0: Concepción: 1.4 Estado del arte (2 h presenciales + 6 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h.
+
+**Artefactos del commit:**
+- `docs/fase0-concepcion/02-objetivos.md`
+- `docs/fase0-concepcion/03-estado-del-arte.md`
+
+**¿Usé IA?** No registrado en el cronograma.
+
+---
+
