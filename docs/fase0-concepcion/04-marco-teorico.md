@@ -1,26 +1,35 @@
-> Versión 0.2 (entrega parcial de octubre de 2026). Se corrige en las semanas 13 y 14; ver BITACORA.md.
+> Versión 1.2 (12 de noviembre de 2026). Las tablas y figuras conservan la numeración del documento Word de docs/entregas.
 
-**0.3.2 Marco conceptual**
+## 1.5 Marco teórico
 
-- **Gestión del Riesgo de Desastres:** Proceso social orientado a la formulación, ejecución, seguimiento y evaluación de políticas para el conocimiento y la reducción del riesgo y el manejo de desastres (Ley 1523 de 2012).
+### 1.5.1 Marco conceptual
 
-- **Respuesta a emergencias / Manejo de desastres:** Fase operativa encargada de la preparación, ejecución de la respuesta, atención humanitaria, alojamiento temporal y distribución de suministros vitales.
+> • **Gestión del riesgo de desastres.** Proceso social de conocimiento y reducción del riesgo y de manejo de desastres (Congreso de la República de Colombia, 2012a).
+>
+> • **Manejo de desastres.** Preparación y ejecución de la respuesta: atención humanitaria, alojamiento temporal y distribución de suministros.
+>
+> • **Hogar.** Unidad básica de registro y de asignación de la asistencia: el grupo de personas que comparte vivienda. En el modelo es la entidad HOGAR, compuesta por integrantes.
+>
+> • **Albergue temporal.** Espacio transitorio de alojamiento sujeto a normas mínimas de habitabilidad y de capacidad (Asociación Esfera, 2018).
+>
+> • **Trazabilidad.** Capacidad de reconstruir el recorrido de cada recurso: origen, movimiento, responsable y beneficiario.
+>
+> • **Enfoque diferencial.** Reconocimiento de las necesidades particulares de niños, adultos mayores, personas con discapacidad, gestantes y minorías étnicas.
+>
+> • **Historia de usuario y criterio de aceptación.** Descripción breve de una necesidad desde quien la tiene, acompañada de las condiciones verificables que la dan por cumplida (Cohn, 2004).
+>
+> • **Requisito funcional, regla de negocio y requisito no funcional.** Lo que el sistema debe hacer, la política del negocio que debe respetar y la calidad con que debe hacerlo (Sommerville, 2011). Las categorías de calidad siguen la norma ISO/IEC 25010 (International Organization for Standardization, 2011).
+>
+> • **Caso de uso y diagrama de clases.** Modelos del Lenguaje Unificado de Modelado para el comportamiento visible del sistema y para su estructura (Object Management Group, 2017).
+>
+> • **Modelo entidad-relación y tercera forma normal.** Representación de los datos y criterio de diseño que evita la redundancia: cada atributo depende solo de la clave de su tabla (Elmasri y Navathe, 2016).
 
-- **Unidad Familiar / Hogar:** Unidad básica de registro y asignación de asistencia humanitaria, compuesta por un grupo de personas que comparten vivienda y presupuesto alimentario.
+### 1.5.2 Marco normativo
 
-- **Albergue Temporal:** Espacio transitorio de alojamiento (institucional o comunitario) habilitado para brindar refugio digno y seguro, sujeto a normas mínimas de habitabilidad y capacidad de carga.
-
-- **Cadena de Suministro Humanitaria y Trazabilidad:** Proceso de planificación, recepción, almacenamiento, asignación y entrega de donaciones e insumos, donde la trazabilidad garantiza reconstruir el historial exacto (origen, movimiento, responsable y beneficiario) de cada recurso.
-
-- **Enfoque Diferencial:** Principio de atención que reconoce las necesidades particulares y vulnerabilidades específicas de grupos como niños, adultos mayores, personas con discapacidad, gestantes y minorías étnicas.
-
-
-**0.3.3 Marco normativo y estándares**
-
-- **Ley 1523 de 2012:** Adopta la Política Nacional de Gestión del Riesgo de Desastres y establece las competencias de los alcaldes y consejos municipales como primeros respondientes en emergencias.
-
-- **Ley 1581 de 2012 y Decreto 1377 de 2013:** Regulan la protección de datos personales (Habeas Data), fundamentales dada la naturaleza sensible de la información capturada de la población vulnerable.
-
-- **Ley 1712 de 2014:** Ley de Transparencia y del Derecho de Acceso a la Información Pública, que exige la rendición de cuentas e integridad en la gestión de recursos públicos y donaciones.
-
-- **Manual Esfera (Proyecto Esfera):** Establece los estándares internacionales mínimos de respuesta humanitaria en materia de alojamiento, asentamientos y distribución de suministros.
+> • **Ley 1523 de 2012.** Adopta la política nacional de gestión del riesgo y hace a los alcaldes y consejos municipales responsables de la respuesta en su territorio (Congreso de la República de Colombia, 2012a).
+>
+> • **Ley 1581 de 2012 y Decreto 1377 de 2013.** Regulan la protección de los datos personales; obligan a restringir el acceso a la información de la población afectada (Congreso de la República de Colombia, 2012b; Ministerio de Comercio, Industria y Turismo, 2013).
+>
+> • **Ley 1712 de 2014.** Ley de transparencia y acceso a la información pública; sustenta la rendición de cuentas sobre recursos públicos y donaciones y la conservación de sus registros (Congreso de la República de Colombia, 2014).
+>
+> • **Manual Esfera.** Normas mínimas internacionales de respuesta humanitaria en alojamiento y distribución de suministros (Asociación Esfera, 2018).

@@ -1,0 +1,44 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam usecase {
+ BackgroundColor white
+ BorderColor black
+}
+skinparam packageStyle rectangle
+skinparam ArrowColor black
+skinparam nodesep 14
+skinparam ranksep 110
+actor "Funcionario de\ngestión del\nriesgo" as FUN
+rectangle "Sistema de gestión de albergues, censo y ayudas humanitarias — Censo y operación sin conexión" {
+  usecase "CU-03\nRegistrar hogar\nafectado" as CU3
+  usecase "CU-04\nRegistrar integrante\ndel hogar" as CU4
+  usecase "CU-05\nRegistrar enfoque\ndiferencial" as CU5
+  usecase "CU-06\nVerificar documento no\nduplicado" as CU6
+  usecase "CU-07\nConsultar hogar por\ndocumento" as CU7
+  usecase "CU-08\nActualizar datos de\nhogar o integrante" as CU8
+  usecase "CU-27\nInactivar integrante\ndel hogar" as CU27
+  usecase "CU-28\nInactivar hogar" as CU28
+  usecase "CU-09\nRegistrar hogares sin\nconexión" as CU9
+  usecase "CU-10\nSincronizar registros\npendientes" as CU10
+}
+actor "Coordinador de\nalbergue" as COO
+FUN -- CU3
+FUN -- CU4
+FUN -- CU7
+CU7 -- COO
+FUN -- CU8
+FUN -- CU27
+FUN -- CU28
+FUN -- CU9
+FUN -- CU10
+CU4 ..> CU6 : <<include>>
+CU8 ..> CU6 : <<include>>
+CU4 <.. CU5 : <<extend>>
+@enduml

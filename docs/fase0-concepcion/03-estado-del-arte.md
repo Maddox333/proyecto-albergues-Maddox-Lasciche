@@ -1,11 +1,13 @@
-> Versión 0.2 (entrega parcial de octubre de 2026). Se corrige en las semanas 13 y 14; ver BITACORA.md.
+> Versión 1.2 (12 de noviembre de 2026). Las tablas y figuras conservan la numeración del documento Word de docs/entregas.
 
-**0.3.1 Estado del arte**
+## 1.4 Estado del arte
 
-En el ámbito internacional y nacional, la gestión informática de desastres ha evolucionado desde el uso de planillas convencionales hacia plataformas especializadas de respuesta humanitaria:
+La gestión informática de desastres pasó de las planillas a plataformas especializadas de respuesta humanitaria. Tres referentes delimitan el vacío que atiende este proyecto.
 
-- **Plataformas de respuesta humanitaria global (Sahana Eden, KoBoToolbox, ODK):** Herramientas de código abierto ampliamente adoptadas por ONG e instituciones globales para recolección de datos en campo. Aunque ofrecen ventajas en captura offline, carecen de integraciones nativas con las reglas de negocio específicas de las entidades territoriales colombianas, la estructura del censo por hogar con validación de documento nacional o la trazabilidad estricta de inventarios con firmas digitales de entrega.
+**Plataformas de recolección de datos en campo.** KoboToolbox (Kobo, s. f.) y ODK (Get ODK, s. f.) son herramientas de código abierto para construir formularios y capturar datos sin conexión, muy usadas por organizaciones humanitarias. Resuelven la captura, pero no incorporan reglas propias de la operación municipal: no controlan cupos de albergues, no descuentan existencias al entregar y no impiden por sí mismas que un documento se registre en dos hogares.
 
-- **Sistemas Nacionales (RUD / UNGRD):** El Registro Único de Damnificados en Colombia es el estándar institucional para consolidar la información de personas afectadas. Sin embargo, su arquitectura está diseñada para el procesamiento de información consolidada a nivel centralizado para autorizar subsidios estatales, dejando un vacío tecnológico en la gestión operativa, inmediata e intradía de los albergues y centros de acopio en la escala municipal.
+**Sistemas de gestión de desastres.** Sahana Eden (Sahana Software Foundation, s. f.) ofrece módulos de albergues, inventario y voluntarios. Es una plataforma amplia y genérica; adaptarla a la estructura del censo por hogar con documento colombiano y a las reglas de asignación locales exige una personalización que un consejo municipal difícilmente asume durante una emergencia.
 
-- **Aportes distintivos del proyecto:** Este sistema cubre la brecha entre la recolección de datos primaria en campo y la consolidación de información, proporcionando una solución web de operación liviana, centrada en la unicidad del registro familiar, el control de inventario de donaciones con deducción automática y la trazabilidad auditable de las ayudas.
+**Registro nacional.** El RUD consolida a la población afectada para acceder a la oferta del Estado y se alimenta con la información que entregan los consejos territoriales (Redacción Medioambiente, 2022). No gestiona la operación diaria de albergues y centros de acopio, y su calidad depende de lo que los municipios logren registrar (Saavedra, 2026).
+
+**Aporte del proyecto.** El sistema cubre el tramo que queda entre la captura en campo y el registro nacional: una solución web liviana centrada en cuatro elementos diferenciadores que la entrevista de la sección 1.7 validó, a saber, la unicidad del registro por documento, el control de cupos de los albergues, el inventario que descuenta cada entrega y la trazabilidad de las ayudas con firma del beneficiario, todo ello operable sin conexión.

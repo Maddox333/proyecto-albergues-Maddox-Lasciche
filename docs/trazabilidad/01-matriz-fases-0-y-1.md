@@ -1,90 +1,70 @@
-> Versión 0.2 (entrega parcial de octubre de 2026). Se corrige en las semanas 13 y 14; ver BITACORA.md.
+> Versión 1.2 (12 de noviembre de 2026). Las tablas y figuras conservan la numeración del documento Word de docs/entregas.
 
-# 7. Trazabilidad HU → CA → RF
+## 2.6 Trazabilidad
 
-| **HU** | **CA**                            | **RF**                       |
-|--------|-----------------------------------|------------------------------|
-| HU-01  | CA-01.1, 01.2, 01.3 / CA-01.4     | RF-01 / RF-02                |
-| HU-02  | CA-02.1, 02.3 / CA-02.2 / CA-02.4 | RF-03 / RF-04 / RF-06        |
-| HU-03  | CA-03.1 / CA-03.2, 03.3           | RF-05 / RF-06                |
-| HU-04  | CA-04.1, 04.2 / CA-04.3           | RF-07 / RF-11                |
-| HU-05  | CA-05.1, 05.2, 05.3               | RF-08                        |
-| HU-06  | CA-06.1, 06.2, 06.3               | RF-09                        |
-| HU-07  | CA-07.1, 07.2, 07.3               | RF-10                        |
-| HU-08  | CA-08.1, 08.2, 08.3               | RF-11                        |
-| HU-09  | CA-09.1, 09.2 / CA-09.3           | RF-12 / RF-09                |
-| HU-10  | CA-10.1, 10.2 / CA-10.3           | RF-13 / RF-14                |
-| HU-11  | CA-11.1, 11.3 / CA-11.2 / CA-11.4 | RF-15 / RF-16 / RF-14        |
-| HU-12  | CA-12.1, 12.2, 12.3               | RF-17                        |
-| HU-13  | CA-13.1, 13.3, 13.4 / CA-13.2     | RF-18 / RF-19                |
-| HU-14  | CA-14.1, 14.2 / CA-14.3           | RF-20 / RF-18                |
-| HU-15  | CA-15.1 a 15.4                    | RF-21                        |
-| HU-16  | CA-16.1, 16.2, 16.3 / CA-16.4     | RF-22 / RF-23                |
-| HU-17  | CA-17.1 a 17.4                    | RF-24                        |
-| HU-18  | CA-18.1, 18.2, 18.3               | RF-25                        |
-| HU-19  | CA-19.1, 19.2, 19.3 / CA-19.4     | RF-26 / RF-25                |
-| HU-20  | CA-20.1 / CA-20.2, 20.3           | RF-27 / RF-28                |
-| HU-21  | CA-21.1 / CA-21.2                 | RF-29 / RF-30 (condicionado) |
-| HU-22  | CA-22.1, 22.2, 22.3               | RF-31                        |
-| HU-23  | CA-23.1, 23.2, 23.3               | RF-32                        |
-| HU-24  | CA-24.1, 24.2 / CA-24.3           | RF-33 / RF-34                |
+La Tabla 176 resume la cadena completa, con una fila por historia: su origen en la sección 1.7, sus criterios, los requisitos y reglas que derivan de ellos, el caso de uso y la pantalla donde aterrizan sus métodos. Cada celda existe en su artefacto; recorrer una fila es recorrer el documento.
 
+**Tabla 176**  
+*Cadena completa de trazabilidad: una fila por historia de usuario*
 
-# 8. Trazabilidad HU → CA → RN → RF
+| **HU** | **Origen (1.7)**              | **CA**            | **RF**              | **RN**                            | **CU**       | **Método → pantalla**                                                                                                            |
+|--------|-------------------------------|-------------------|---------------------|-----------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------------|
+| HU-01  | D-02, H-09                    | CA-01.1 a CA-01.5 | RF-01, RF-02, RF-05 | RN-01, RN-05, RN-06, RN-34        | CU-01        | Usuario.autenticar(), Usuario.tienePermiso() → MK-12                                                                             |
+| HU-02  | D-02, H-12                    | CA-02.1 a CA-02.4 | RF-03, RF-04, RF-06 | RN-02, RN-03, RN-04, RN-06        | CU-02        | Usuario.crear(), Usuario.existeNombreUsuario(), Usuario.tienePermiso() → MK-08                                                   |
+| HU-03  | D-02, H-09                    | CA-03.1 a CA-03.3 | RF-05, RF-06        | RN-04, RN-05                      | CU-01        | Usuario.tienePermiso() → MK-12                                                                                                   |
+| HU-04  | H-01, H-02                    | CA-04.1 a CA-04.3 | RF-07, RF-11        | RN-06                             | CU-03        | Hogar.crear(), Hogar.buscarPorDocumento() → MK-01                                                                                |
+| HU-05  | H-03, H-01                    | CA-05.1 a CA-05.3 | RF-08               | RN-06, RN-08, RN-09               | CU-04        | Integrante.crear(), Hogar.totalIntegrantes() → MK-02                                                                             |
+| HU-06  | H-01, H-02, H-11              | CA-06.1 a CA-06.3 | RF-09               | RN-07                             | CU-04, CU-06 | Integrante.existeDocumento() → MK-02                                                                                             |
+| HU-07  | H-06, D-04                    | CA-07.1 a CA-07.3 | RF-10               | RN-10                             | CU-05        | Integrante.asignarCondiciones() → MK-02                                                                                          |
+| HU-08  | H-01, H-03                    | CA-08.1 a CA-08.3 | RF-11               | RN-06                             | CU-07        | Hogar.buscarPorDocumento(), AsignacionAlbergue.albergueActual() → MK-01                                                          |
+| HU-09  | H-01                          | CA-09.1 a CA-09.4 | RF-09, RF-12        | RN-06, RN-07, RN-08               | CU-06, CU-08 | Hogar.actualizar(), Integrante.actualizar(), Integrante.existeDocumento() → MK-01, MK-02                                         |
+| HU-10  | H-10, H-11                    | CA-10.1 a CA-10.3 | RF-13, RF-14        | RN-06, RN-25                      | CU-09        | Hogar.guardarLocal(), Hogar.contarPorEstado() → MK-03                                                                            |
+| HU-11  | H-10, H-01                    | CA-11.1 a CA-11.4 | RF-14, RF-15, RF-16 | RN-07, RN-26                      | CU-10        | Hogar.sincronizarPendientes(), Integrante.existeDocumento(), Hogar.contarPorEstado() → MK-03                                     |
+| HU-12  | H-04, D-04                    | CA-12.1 a CA-12.3 | RF-17               | RN-06, RN-11                      | CU-11        | Albergue.crear() → MK-09                                                                                                         |
+| HU-13  | H-06, H-04                    | CA-13.1 a CA-13.5 | RF-18, RF-19        | RN-12, RN-13, RN-14, RN-15, RN-34 | CU-12        | AsignacionAlbergue.asignar(), Hogar.totalIntegrantes(), Albergue.cuposDisponibles(), AsignacionAlbergue.albergueActual() → MK-04 |
+| HU-14  | H-04, H-12                    | CA-14.1 a CA-14.3 | RF-18, RF-20        | RN-13, RN-14, RN-16               | CU-13        | AsignacionAlbergue.registrarSalida(), AsignacionAlbergue.asignar() → MK-09                                                       |
+| HU-15  | H-11, H-04                    | CA-15.1 a CA-15.4 | RF-21               | RN-14                             | CU-14        | Albergue.listarActivos(), Albergue.ocupacionActual(), Albergue.cuposDisponibles() → MK-09                                        |
+| HU-16  | H-05, H-11, D-03              | CA-16.1 a CA-16.4 | RF-22, RF-23        | RN-17, RN-18, RN-19, RN-20        | CU-15        | Donacion.registrar(), TipoAyuda.existencias(), TipoAyuda.existeNombre() → MK-05                                                  |
+| HU-17  | H-05, H-11                    | CA-17.1 a CA-17.4 | RF-24               | RN-20                             | CU-16        | TipoAyuda.listarActivos(), TipoAyuda.existencias() → MK-10                                                                       |
+| HU-18  | H-09, H-03                    | CA-18.1 a CA-18.4 | RF-25               | RN-06, RN-22, RN-34               | CU-17        | Integrante.buscarPorDocumento() → MK-06                                                                                          |
+| HU-19  | H-08, H-07                    | CA-19.1 a CA-19.4 | RF-25, RF-26        | RN-17, RN-22, RN-23               | CU-18        | Entrega.registrar(), Integrante.buscarPorDocumento() → MK-06                                                                     |
+| HU-20  | H-11, H-05                    | CA-20.1 a CA-20.3 | RF-27, RF-28        | RN-20, RN-21                      | CU-18        | Entrega.registrar(), TipoAyuda.existencias(), TipoAyuda.hayExistencias() → MK-06                                                 |
+| HU-21  | H-08, H-11                    | CA-21.1 a CA-21.2 | RF-29, RF-30        | RN-24                             | CU-19        | Entrega.capturarFirma() → MK-06                                                                                                  |
+| HU-22  | H-09, H-08                    | CA-22.1 a CA-22.3 | RF-31               | RN-23                             | CU-20        | Entrega.listarPorHogar(), Hogar.buscarPorDocumento() → MK-01                                                                     |
+| HU-23  | D-03, H-08                    | CA-23.1 a CA-23.3 | RF-32               | RN-23                             | CU-21        | Donacion.listarPorTipo(), Entrega.listarPorTipo(), TipoAyuda.existencias() → MK-10                                               |
+| HU-24  | H-12                          | CA-24.1 a CA-24.2 | RF-33               | RN-06                             | CU-22        | Voluntario.crear() → MK-11                                                                                                       |
+| HU-25  | D-02, PS-01                   | CA-25.1 a CA-25.2 | RF-06, RF-35        | RN-04, RN-27                      | CU-24        | Usuario.listarActivos(), Usuario.tienePermiso() → MK-08                                                                          |
+| HU-26  | H-12, D-02, PS-01             | CA-26.1 a CA-26.4 | RF-04, RF-36        | RN-02, RN-03, RN-06, RN-28        | CU-25        | Usuario.actualizar(), Usuario.existeNombreUsuario() → MK-08                                                                      |
+| HU-27  | D-03, D-08, PS-02             | CA-27.1 a CA-27.4 | RF-37               | RN-27, RN-28, RN-34               | CU-26        | Usuario.inactivar() → MK-08                                                                                                      |
+| HU-28  | H-02, D-08, PS-02             | CA-28.1 a CA-28.4 | RF-38               | RN-14, RN-27, RN-30               | CU-27        | Integrante.inactivar(), Hogar.totalIntegrantes() → MK-01                                                                         |
+| HU-29  | H-02, H-09, D-03, D-08, PS-02 | CA-29.1 a CA-29.4 | RF-39               | RN-27, RN-29, RN-34               | CU-28        | Hogar.inactivar(), AsignacionAlbergue.albergueActual() → MK-01, MK-07                                                            |
+| HU-30  | H-04, D-04, PS-03             | CA-30.1 a CA-30.4 | RF-40               | RN-06, RN-11, RN-14, RN-32        | CU-29        | Albergue.actualizar(), Albergue.cuposDisponibles(), Albergue.ocupacionActual() → MK-09                                           |
+| HU-31  | H-04, D-03, D-08, PS-02       | CA-31.1 a CA-31.4 | RF-41               | RN-27, RN-31, RN-34               | CU-30        | Albergue.inactivar(), Albergue.ocupacionActual() → MK-09                                                                         |
+| HU-32  | H-05, H-11                    | CA-32.1 a CA-32.3 | RF-42               | RN-06, RN-19                      | CU-31        | TipoAyuda.crear(), TipoAyuda.existeNombre() → MK-10                                                                              |
+| HU-33  | H-05, PS-03                   | CA-33.1 a CA-33.3 | RF-43               | RN-06, RN-19                      | CU-32        | TipoAyuda.actualizar(), TipoAyuda.existeNombre() → MK-10                                                                         |
+| HU-34  | D-03, D-08, PS-02             | CA-34.1 a CA-34.4 | RF-44               | RN-27, RN-33, RN-34               | CU-33        | TipoAyuda.inactivar(), TipoAyuda.existencias() → MK-10                                                                           |
+| HU-35  | H-12                          | CA-35.1 a CA-35.2 | RF-34               | RN-27                             | CU-23        | Voluntario.listarActivos() → MK-11                                                                                               |
+| HU-36  | H-12, PS-03                   | CA-36.1 a CA-36.2 | RF-45               | RN-06                             | CU-34        | Voluntario.actualizar() → MK-11                                                                                                  |
+| HU-37  | D-08, H-12, PS-02             | CA-37.1 a CA-37.3 | RF-46               | RN-27                             | CU-35        | Voluntario.inactivar() → MK-11                                                                                                   |
 
-| **RN** | **HU / CA**                                                                        | **RF que la hacen cumplir**              |
-|--------|------------------------------------------------------------------------------------|------------------------------------------|
-| RN-01  | HU-01 / CA-01.1, 01.2, 01.4                                                        | RF-01, RF-02                             |
-| RN-02  | HU-02 / CA-02.2                                                                    | RF-04, RF-03                             |
-| RN-03  | HU-02 / CA-02.1, 02.3                                                              | RF-03                                    |
-| RN-04  | HU-02 / CA-02.4; HU-03 / CA-03.3                                                   | RF-06, RF-03                             |
-| RN-05  | HU-03 / CA-03.1, 03.2                                                              | RF-05, RF-06                             |
-| RN-06  | HU-04 / 04.2; HU-05 / 05.2; HU-09 / 09.2; HU-10 / 10.2; HU-12 / 12.3; HU-24 / 24.2 | RF-07, RF-08, RF-12, RF-13, RF-17, RF-33 |
-| RN-07  | HU-06 / 06.1, 06.2; HU-09 / 09.3; HU-11 / 11.2                                     | RF-09, RF-08, RF-12, RF-16               |
-| RN-08  | HU-05 / CA-05.3                                                                    | RF-08, RF-12                             |
-| RN-09  | HU-05 / CA-05.1                                                                    | RF-08                                    |
-| RN-10  | HU-07 / CA-07.1, 07.2, 07.3                                                        | RF-10                                    |
-| RN-11  | HU-12 / CA-12.1, 12.2                                                              | RF-17                                    |
-| RN-12  | HU-13 / CA-13.3                                                                    | RF-18                                    |
-| RN-13  | HU-13 / CA-13.4; HU-14 / CA-14.3                                                   | RF-18, RF-20                             |
-| RN-14  | HU-13 / 13.1; HU-14 / 14.1; HU-15 / 15.1, 15.3                                     | RF-18, RF-20, RF-21                      |
-| RN-15  | HU-13 / CA-13.2                                                                    | RF-19, RF-18                             |
-| RN-16  | HU-14 / CA-14.2                                                                    | RF-20                                    |
-| RN-17  | HU-16 / 16.2; HU-19 / 19.2                                                         | RF-22, RF-26                             |
-| RN-18  | HU-16 / CA-16.1, 16.3                                                              | RF-22                                    |
-| RN-19  | HU-16 / CA-16.4                                                                    | RF-23, RF-22                             |
-| RN-20  | HU-17 / 17.1; HU-20 / 20.1                                                         | RF-23, RF-24, RF-27                      |
-| RN-21  | HU-20 / CA-20.2, 20.3                                                              | RF-28                                    |
-| RN-22  | HU-18 / 18.1, 18.2; HU-19 / 19.4                                                   | RF-25, RF-26                             |
-| RN-23  | HU-19 / 19.1, 19.3; HU-22 / 22.1; HU-23 / 23.1                                     | RF-26, RF-31, RF-32                      |
-| RN-24  | HU-21 / CA-21.2                                                                    | RF-30, RF-29 (condicionado a V-10)       |
-| RN-25  | HU-10 / CA-10.2                                                                    | RF-13                                    |
-| RN-26  | HU-11 / CA-11.2, 11.3                                                              | RF-15, RF-16                             |
+*Nota.* H = hallazgo de la entrevista; D = fuente documental; PS = protocolo de subsanación. Elaboración propia.
 
+La Tabla 177 registra las verificaciones de consistencia aplicadas al conjunto. Las relaciones entre historias, requisitos, reglas y métodos se generaron a partir de las anotaciones de cada criterio de aceptación, de modo que las fichas, las matrices y los diagramas no pueden contradecirse.
 
-# 9. Origen de los RNF
+**Tabla 177**  
+*Verificaciones de consistencia del análisis*
 
-| **RNF** | **Categoría**  | **Fundamento**                                                |
-|---------|----------------|---------------------------------------------------------------|
-| RNF-01  | Seguridad      | Fase 0 (objetivo general); HU-01 / CA-01.4; HU-03             |
-| RNF-02  | Seguridad      | Fase 0 (Supuestos; Ley 1581 y Decreto 1377)                   |
-| RNF-04  | Integridad     | Fase 0 (obj. específico 3, causas, Ley 1712); HU-19 / CA-19.1 |
-| RNF-05  | Integridad     | Fase 0 (obj. específico 2); HU-06; HU-20                      |
-| RNF-07  | Disponibilidad | Fase 0 (Alcance, pregunta 11); HU-10 / CA-10.1                |
-| RNF-08  | Confiabilidad  | HU-11 / CA-11.3                                               |
-| RNF-09  | Compatibilidad | Fase 0 (Alcance, Supuestos, 0.3.1 aportes distintivos)        |
-| RNF-10  | Usabilidad     | CA de rechazo de HU-01, HU-05, HU-12, HU-13                   |
+| **N.º** | **Verificación**                                                                                                | **Resultado**                                                                                                                                                |
+|---------|-----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1       | Toda entidad del modelo tiene al menos una historia.                                                            | Cumple: 10 de 10 entidades (Tabla 26).                                                                                                                       |
+| 2       | Todo método del diagrama de clases tiene historia y requisito.                                                  | Cumple: 47 de 47 métodos (Tabla 21).                                                                                                                         |
+| 3       | Toda historia sigue la ficha oficial, usa un rol concreto y cita una fuente de la sección 1.7.                  | Cumple: 37 de 37 historias.                                                                                                                                  |
+| 4       | Toda historia tiene al menos un criterio de rechazo.                                                            | Cumple: 125 criterios en total, 65 de rechazo.                                                                                                               |
+| 5       | Todo criterio de rechazo que expresa una prohibición del negocio tiene su regla numerada.                       | Cumple. Los 6 criterios de rechazo sin regla (CA-08.2, CA-15.4, CA-17.4, CA-22.3, CA-23.3, CA-35.2) son consultas sin resultado, que informan y no prohíben. |
+| 6       | Todo requisito funcional cita su historia y toda regla tiene un requisito que la vigila.                        | Cumple: 46 requisitos y 34 reglas.                                                                                                                           |
+| 7       | Todo requisito no funcional tiene categoría y medida.                                                           | Cumple: 9 de 9.                                                                                                                                              |
+| 8       | Toda baja se redacta como inactivación.                                                                         | Cumple: HU-27, HU-28, HU-29, HU-31, HU-34 y HU-37; RN-27.                                                                                                    |
+| 9       | Todo rol de las historias es actor de los casos de uso y todo flujo alternativo nace de un criterio de rechazo. | Cumple: 3 roles; 23 flujos alternativos en 6 casos documentados.                                                                                             |
+| 10      | Todo caso de uso documentado tiene mockup y todo botón indica su caso de uso y su método.                       | Cumple: 12 mockups (Tabla 175).                                                                                                                              |
 
-
-# 10. Revisión de requisitos huérfanos
-
-| **Control**                                | **Resultado**                                                                                                                                                               |
-|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1\. Todo RF tiene HU y CA de origen        | Cumple para RF-01 a RF-34; cada RF conserva origen explícito en HU/CA.                                                                                                      |
-| 2\. RF huérfanos                           | Ninguno en el baseline depurado.                                                                                                                                            |
-| 3\. Toda RN tiene origen                   | Cumple para RN-01 a RN-26; cada RN conserva HU/CA y/o Fase 0.                                                                                                               |
-| 4\. Toda RN tiene RF o mecanismo funcional | Cumple para RN-01 a RN-26.                                                                                                                                                  |
-| 5\. RN sin mecanismo identificado          | Ninguna en el baseline depurado; RN-27 fue retirada junto con HU-25 por falta de fundamento funcional suficiente.                                                           |
-| 6\. Todo RNF tiene fundamento              | Cumple para los RNF conservados; se retiraron RNF que no tenían naturaleza de requisito del producto o dependían de elementos sin CA.                                       |
-| 7\. Funcionalidad fuera del alcance        | No se agregaron funcionalidades fuera de la Fase 0. Se mantiene la exclusión de conexión en tiempo real con el RUD, transferencias monetarias, IoT y evaluaciones técnicas. |
-| 8\. Trazabilidad inversa                   | Cada RF/RN/RNF conservado puede rastrearse hacia HU/CA y, cuando corresponde, hacia Fase 0.                                                                                 |
+*Nota.* Elaboración propia.

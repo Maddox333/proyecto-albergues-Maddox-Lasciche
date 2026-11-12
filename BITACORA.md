@@ -237,3 +237,31 @@ Se priorizaron tres correcciones. La primera fue construir el diccionario de dat
 
 ---
 
+## Entrada #14 · Semana 14 (2 nov – 7 nov de 2026)
+
+**Commit:** Correcciones 1 a 3: historias en ficha oficial, requisitos, análisis de la encuesta, cronograma, casos de uso, mockups y matriz
+
+**¿Qué hice?**
+- Fase 1: Análisis: Corrección prioritaria 1: HU en la ficha oficial, amarradas a los métodos; fichas de RF, RN y RNF (2 h presenciales + 4 h autónomas).
+- Fase 0: Concepción: Corrección prioritaria 2: 1.7.3 análisis de la entrevista y 1.9 cronograma (1 h presenciales + 2 h autónomas).
+- Fase 1: Análisis: Corrección prioritaria 3: casos de uso, 2.5 mockups, 2.6 matriz y formato APA (1 h presenciales + 2 h autónomas).
+
+Horas de la semana: 4 presenciales + 8 autónomas = 12 h. Entrega o hito: Fases 0 y 1 corregidas (Línea Base 1).
+
+**Artefactos del commit:**
+- `docs/fase0-concepcion/`
+- `docs/fase1-analisis/`
+- `docs/trazabilidad/01-matriz-fases-0-y-1.md`
+- `docs/diagramas/casos-de-uso/`
+- `docs/entregas/v1.0_Documento_Fases_0_y_1.docx`
+
+**¿Qué problema encontré?**
+No fue posible hacer las entrevistas presenciales con el personal de las entidades de socorro.
+
+**¿Cómo lo resolví?**
+El guion se aplicó como formulario de preguntas cerradas en Microsoft Forms (60 respuestas) y la sección 1.7.4 registra la limitación y el protocolo para subsanarla.
+
+**¿Usé IA?** Sí. Se usó Claude (Anthropic) como apoyo para redactar, generar diagramas y código desde el modelo, y verificar la trazabilidad; el autor revisó y ajustó cada artefacto.
+
+---
+

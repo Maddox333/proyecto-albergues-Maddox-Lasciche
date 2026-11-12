@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam usecase {
+ BackgroundColor white
+ BorderColor black
+}
+skinparam packageStyle rectangle
+skinparam ArrowColor black
+skinparam nodesep 14
+skinparam ranksep 110
+actor "Funcionario de\ngestión del\nriesgo" as FUN
+rectangle "Sistema de gestión de albergues, censo y ayudas humanitarias — Albergues" {
+  usecase "CU-11\nRegistrar albergue\ntemporal" as CU11
+  usecase "CU-12\nAsignar hogar a un\nalbergue" as CU12
+  usecase "CU-13\nRegistrar salida de un\nhogar" as CU13
+  usecase "CU-14\nConsultar ocupación y\ncupos" as CU14
+  usecase "CU-29\nActualizar albergue" as CU29
+  usecase "CU-30\nInactivar albergue" as CU30
+}
+actor "Coordinador de\nalbergue" as COO
+FUN -- CU11
+FUN -- CU12
+CU13 -- COO
+FUN -- CU14
+CU14 -- COO
+FUN -- CU29
+FUN -- CU30
+@enduml

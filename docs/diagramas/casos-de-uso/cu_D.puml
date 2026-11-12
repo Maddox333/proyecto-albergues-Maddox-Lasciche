@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam usecase {
+ BackgroundColor white
+ BorderColor black
+}
+skinparam packageStyle rectangle
+skinparam ArrowColor black
+skinparam nodesep 14
+skinparam ranksep 110
+actor "Funcionario de\ngestión del\nriesgo" as FUN
+rectangle "Sistema de gestión de albergues, censo y ayudas humanitarias — Inventario y entrega de ayudas" {
+  usecase "CU-31\nRegistrar tipo de\nayuda" as CU31
+  usecase "CU-32\nActualizar tipo de\nayuda" as CU32
+  usecase "CU-33\nInactivar tipo de\nayuda" as CU33
+  usecase "CU-15\nRegistrar donación\nrecibida" as CU15
+  usecase "CU-16\nConsultar existencias\ndel inventario" as CU16
+  usecase "CU-17\nVerificar identidad\ndel beneficiario" as CU17
+  usecase "CU-18\nRegistrar entrega de\nayuda a un hogar" as CU18
+  usecase "CU-19\nCapturar firma digital\ndel beneficiario" as CU19
+  usecase "CU-20\nConsultar historial de\nentregas de un hogar" as CU20
+  usecase "CU-21\nConsultar trazabilidad\nde un tipo de ayuda" as CU21
+}
+actor "Coordinador de\nalbergue" as COO
+actor "Familia afectada\n(beneficiario)" as FAM
+FUN -- CU31
+FUN -- CU32
+FUN -- CU33
+FUN -- CU15
+FUN -- CU16
+CU16 -- COO
+FUN -- CU18
+FUN -- CU20
+CU20 -- COO
+FUN -- CU21
+CU19 -- FAM
+CU18 ..> CU17 : <<include>>
+CU18 ..> CU19 : <<include>>
+@enduml

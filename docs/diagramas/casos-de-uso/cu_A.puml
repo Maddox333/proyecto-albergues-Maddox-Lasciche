@@ -1,0 +1,45 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam dpi 220
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 12
+skinparam monochrome true
+skinparam backgroundColor white
+
+skinparam usecase {
+ BackgroundColor white
+ BorderColor black
+}
+skinparam packageStyle rectangle
+skinparam ArrowColor black
+skinparam nodesep 14
+skinparam ranksep 110
+actor "Usuario\nregistrado" as UR
+actor "Administrador\ndel sistema" as ADM
+actor "Funcionario de\ngestión del\nriesgo" as FUN
+rectangle "Sistema de gestión de albergues, censo y ayudas humanitarias — Acceso, usuarios y voluntarios" {
+  usecase "CU-01\nIniciar sesión" as CU1
+  usecase "CU-02\nRegistrar usuario y\nasignar rol" as CU2
+  usecase "CU-24\nConsultar usuarios" as CU24
+  usecase "CU-25\nActualizar usuario" as CU25
+  usecase "CU-26\nInactivar usuario" as CU26
+  usecase "CU-22\nRegistrar voluntario" as CU22
+  usecase "CU-23\nConsultar voluntarios" as CU23
+  usecase "CU-34\nActualizar voluntario" as CU34
+  usecase "CU-35\nInactivar voluntario" as CU35
+}
+UR -- CU1
+ADM -- CU2
+ADM -- CU24
+ADM -- CU25
+ADM -- CU26
+FUN -- CU22
+FUN -- CU23
+FUN -- CU34
+FUN -- CU35
+ADM -up-|> UR
+FUN -up-|> UR
+actor "Coordinador\nde albergue" as COO
+COO -up-|> UR
+@enduml
