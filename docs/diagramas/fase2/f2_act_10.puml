@@ -1,0 +1,36 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Solicita «Sincronizar ahora», o el
+sistema detecta la conexión (MK-03);
+|Sistema|
+:2. Envía los registros pendientes
+al sistema central;
+while (¿Quedan registros por procesar\ny hay conexión? [RN-26]) is (sí)
+  if (¿El documento ya existe en el\nsistema central? [RN-07]) then (sí)
+    :FA-01. No crea el duplicado; deja el
+    registro en CONFLICTO para revisión;
+  else (no)
+    :4. Almacena el registro y lo
+    marca SINCRONIZADO;
+  endif
+endwhile (no)
+note right
+  FA-02. Si la conexión se interrumpe,
+  los registros no confirmados siguen
+  PENDIENTE y se reenvían al reintentar.
+end note
+:5. Informa sincronizados, en conflicto
+y pendientes (RF-14);
+|Funcionario|
+:6. Revisa el resultado;
+stop
+@enduml

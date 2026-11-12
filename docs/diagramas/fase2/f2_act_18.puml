@@ -1,0 +1,56 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Inicia el registro de una entrega (MK-06);
+repeat
+  :2. Ingresa tipo y número de
+  documento del beneficiario;
+  |Sistema|
+repeat while (¿Falta el documento?\n[RN-06]) is (sí: FA-01, lo solicita) not (no)
+:3. Verifica la identidad (CU-17);
+if (¿La persona está censada?\n[RN-22]) then (no)
+  :FA-02. «La persona no figura
+  en el censo.»;
+  stop
+elseif (¿Integrante y hogar activos?\n[RN-34]) then (no)
+  :FA-03. Indica que el
+  registro está inactivo;
+  stop
+else (sí)
+endif
+repeat
+  |Funcionario|
+  :4. Selecciona el tipo de ayuda
+  e ingresa la cantidad;
+  |Sistema|
+  if (¿Tipo de ayuda seleccionado?\n[RN-23]) then (no)
+    :FA-05. Señala el dato faltante;
+  elseif (¿Cantidad mayor que cero?\n[RN-17]) then (no)
+    :FA-06. «La cantidad debe ser un
+    número mayor que cero.»;
+  elseif (¿Las existencias cubren la cantidad\ny el tipo no está agotado? [RN-21]) then (no)
+    :FA-07 / FA-08. Muestra las unidades
+    disponibles o informa que está agotado;
+  else (sí)
+  endif
+repeat while (¿Se rechazó el tipo o la cantidad?\n[RN-17, RN-21, RN-23]) is (sí: vuelve al paso 4) not (no)
+repeat
+  |Beneficiario|
+  :7. Firma en el dispositivo (CU-19);
+  |Funcionario|
+  :Confirma la firma;
+  |Sistema|
+repeat while (¿Falta la firma?\n[RN-24]) is (sí: FA-09, la solicita) not (no)
+:8. Registra la entrega con beneficiario y hogar,
+tipo, cantidad, fecha y hora, usuario y firma
+[RN-23] y descuenta las existencias [RN-20];
+stop
+@enduml

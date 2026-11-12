@@ -1,0 +1,42 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Selecciona el hogar y solicita
+agregar un integrante (MK-01);
+|Sistema|
+:2. Presenta el formulario
+de integrante (MK-02);
+repeat
+  |Funcionario|
+  :3. Ingresa tipo y número de documento,
+  nombres, apellidos y fecha de nacimiento;
+  |Sistema|
+  if (¿Datos obligatorios completos?\n[RN-06]) then (no)
+    :FA-01. Señala el dato faltante;
+  elseif (¿Número con el formato\nde su tipo? [RN-08]) then (no)
+    :FA-02. Muestra el formato esperado;
+  else (sí)
+  endif
+repeat while (¿Se rechazó algún dato?\n[RN-06, RN-08]) is (sí: vuelve al paso 3) not (no)
+if (¿El documento ya está registrado?\n(CU-06) [RN-07]) then (sí)
+  :FA-03 / FA-04. Muestra el hogar donde
+  figura el documento; no crea el registro;
+  stop
+else (no)
+endif
+:7. Registra al integrante activo, lo asocia
+al hogar y muestra el nuevo total [RN-09];
+if (¿Presenta enfoque diferencial?\n(CU-05) [RN-10]) then (sí)
+  :Registra sus condiciones de la lista;
+else (no)
+endif
+stop
+@enduml

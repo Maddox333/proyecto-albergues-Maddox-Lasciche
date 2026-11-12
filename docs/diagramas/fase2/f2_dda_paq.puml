@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam packageStyle rectangle
+skinparam ranksep 45
+package "albergues.vista" as vista {
+  rectangle "Páginas MK-01 a MK-12 (HTML, CSS y JavaScript)\lValidación de forma [RN-06, RN-08, RN-17]\lCliente sin conexión: copia de Hogar e Integrante\l+ almacenamiento local [RN-25, RN-26]\l" as v1
+}
+package "albergues.controlador" as ctrl {
+  rectangle "Filtro de sesión y permisos [RN-01, RN-05]\lAccesoControlador · UsuarioControlador\lCensoControlador · SincronizacionControlador\lAlbergueControlador · InventarioControlador\lEntregaControlador · VoluntarioControlador\l" as c1
+}
+package "albergues.modelo" as modelo {
+  rectangle "Usuario · Hogar · Integrante · Albergue\lAsignacionAlbergue · TipoAyuda · Donacion\lEntrega · Voluntario\lRol · TipoDocumento · CondicionDiferencial\lEstadoSincronizacion\l" as m1
+}
+package "albergues.persistencia" as pers {
+  rectangle "ConexionBD (conexión y transacciones)\l" as p1
+}
+database "MySQL\n10 tablas" as bd
+v1 -down.> c1 : «evento»
+c1 -down.> m1 : invoca métodos del\ndiagrama de clases
+m1 -down.> p1 : usa
+p1 -down.> bd : SQL
+@enduml

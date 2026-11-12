@@ -1,0 +1,32 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Solicita registrar una donación (MK-10);
+|Sistema|
+:2. Presenta el formulario (MK-05);
+repeat
+  |Funcionario|
+  :3. Selecciona el tipo de ayuda e
+  ingresa la cantidad y el origen;
+  |Sistema|
+  if (¿Tipo de ayuda y origen completos?\n[RN-18]) then (no)
+    :FA-01. Señala el dato faltante;
+  elseif (¿Cantidad mayor que cero?\n[RN-17]) then (no)
+    :FA-02. «La cantidad debe ser un
+    número mayor que cero.»;
+  else (sí)
+  endif
+repeat while (¿Se rechazó algún dato?\n[RN-17, RN-18]) is (sí: vuelve al paso 3) not (no)
+:6. Registra la donación con fecha y usuario
+y la acumula en las existencias de su tipo,
+sin crear un tipo duplicado [RN-19, RN-20];
+stop
+@enduml

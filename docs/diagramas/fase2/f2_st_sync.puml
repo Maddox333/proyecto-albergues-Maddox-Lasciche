@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+hide empty description
+skinparam state {
+ BackgroundColor white
+ BorderColor black
+}
+[*] --> SINCRONIZADO : Hogar.crear(h)\n[con conexión]
+[*] --> PENDIENTE : Hogar.guardarLocal(h)\n[sin conexión; RN-25]
+PENDIENTE --> SINCRONIZADO : Hogar.sincronizarPendientes()\n[el documento no existe en el\nsistema central]
+PENDIENTE --> CONFLICTO : Hogar.sincronizarPendientes()\n[el documento ya existe; RN-07]
+PENDIENTE --> PENDIENTE : Hogar.sincronizarPendientes()\n[conexión interrumpida; RN-26]
+CONFLICTO : queda en el dispositivo para revisión\ndel Funcionario (MK-03, RN-26)
+SINCRONIZADO : guardado en el sistema central
+@enduml

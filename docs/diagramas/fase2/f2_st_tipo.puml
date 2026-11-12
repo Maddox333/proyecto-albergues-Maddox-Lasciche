@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+hide empty description
+skinparam state {
+ BackgroundColor white
+ BorderColor black
+}
+state "Activo" as Activo {
+  state "Agotado" as Ago
+  state "Con existencias" as ConE
+  [*] --> Ago
+  Ago --> ConE : Donacion.registrar(d)\n[cantidad > 0; RN-17, RN-20]
+  ConE --> ConE : Donacion.registrar(d)\no Entrega.registrar(e)\n[cantidad < existencias; RN-21]
+  ConE --> Ago : Entrega.registrar(e)\n[cantidad = existencias; RN-21]
+}
+[*] --> Activo : TipoAyuda.crear(t)\n[nombre único; RN-19]
+Ago --> Inactivo : TipoAyuda.inactivar(idTipoAyuda)\n[existencias = 0; RN-33]
+Inactivo : conserva donaciones y entregas (RN-27)
+@enduml

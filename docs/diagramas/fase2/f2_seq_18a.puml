@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+actor "Beneficiario" as B
+boundary "MK-06\nRegistrar entrega" as V
+control "EntregaControlador" as C
+entity ":Integrante" as Integrante
+entity ":TipoAyuda" as TipoAyuda
+entity ":Entrega" as Entrega
+database "BD" as DB
+F -> V : ingresa el documento del beneficiario;\nclic «Verificar»
+alt documento vacío [RN-06]
+  V --> F : solicita el documento (FA-01)
+else documento ingresado
+  V -> C : «evento» Verificar (CU-17)
+  C -> Integrante : buscarPorDocumento(tipo, numero)
+  Integrante -> DB : SELECT … FROM INTEGRANTE\nJOIN HOGAR
+  Integrante --> C : integrante y hogar, o nulo
+  alt no figura en el censo [RN-22]
+    C --> V : «La persona no figura en el censo.» (FA-02)
+  else integrante u hogar inactivo [RN-34]
+    C --> V : indica que el registro está inactivo (FA-03)
+  else verificado
+    C --> V : beneficiario verificado (CA-18.1)
+  end
+end
+@enduml

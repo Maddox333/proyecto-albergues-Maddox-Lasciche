@@ -1,0 +1,41 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+boundary "MK-02\nRegistrar integrante" as V
+control "CensoControlador" as C
+entity ":Integrante" as Integrante
+entity ":Hogar" as Hogar
+database "BD" as DB
+F -> V : ingresa documento, nombres,\napellidos y fecha de nacimiento
+F -> V : clic «Guardar»
+note over V : valida obligatorios y formato\n[RN-06, RN-08] (FA-01, FA-02)
+V -> C : «evento» Guardar (CU-04)
+C -> Integrante : existeDocumento(tipo, numero)
+Integrante -> DB : SELECT … FROM INTEGRANTE
+DB --> Integrante : filas encontradas
+Integrante --> C : existe: boolean
+alt existe = true [RN-07]
+  C --> V : «Documento ya registrado» y hogar\ndonde figura (FA-03, FA-04)
+else existe = false
+  C -> Integrante : crear(i)
+  Integrante -> DB : INSERT INTO INTEGRANTE
+  opt el integrante presenta enfoque diferencial (CU-05)
+    C -> Integrante : asignarCondiciones(condiciones)
+    Integrante -> DB : INSERT INTO INTEGRANTE_CONDICION
+  end
+  C -> Hogar : totalIntegrantes()
+  Hogar -> DB : SELECT COUNT(*) FROM INTEGRANTE
+  Hogar --> C : total
+  C --> V : integrante registrado y nuevo total\n[RN-09] (CA-05.1)
+end
+@enduml

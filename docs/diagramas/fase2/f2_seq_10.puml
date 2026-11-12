@@ -1,0 +1,47 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+boundary "MK-03\nSincronización" as V
+entity ":Hogar\n(copia en el\ndispositivo)" as HogarL
+database "Almacenamiento\nlocal" as LS
+control "SincronizacionControlador" as C
+entity ":Integrante" as Integrante
+entity ":Hogar" as Hogar
+database "BD central" as DB
+F -> V : clic «Sincronizar ahora»\n(o el navegador detecta la conexión)
+V -> HogarL : sincronizarPendientes()
+HogarL -> LS : lee los registros PENDIENTE
+HogarL -> C : «evento» Sincronizar (CU-10)\ncon los registros pendientes
+loop por cada hogar recibido, mientras haya conexión [RN-26]
+  loop por cada integrante del hogar
+    C -> Integrante : existeDocumento(tipo, numero)
+    Integrante -> DB : SELECT … FROM INTEGRANTE
+    Integrante --> C : existe: boolean
+  end
+  alt algún documento ya existe [RN-07]
+    note over C : no inserta: resultado CONFLICTO (FA-01)
+  else ningún documento existe
+    C -> Hogar : crear(h)
+    Hogar -> DB : INSERT INTO HOGAR
+    C -> Integrante : crear(i)
+    Integrante -> DB : INSERT INTO INTEGRANTE
+  end
+end
+C --> HogarL : resultado por registro
+HogarL -> LS : actualiza estado_sincronizacion\n(SINCRONIZADO o CONFLICTO)
+note over HogarL, LS : si la conexión se interrumpe, los registros\nsin respuesta siguen PENDIENTE (FA-02)
+V -> HogarL : contarPorEstado(estado)
+HogarL -> LS : cuenta por estado
+HogarL --> V : totales
+V --> F : sincronizados, en conflicto\ny pendientes (RF-14, CA-11.4)
+@enduml

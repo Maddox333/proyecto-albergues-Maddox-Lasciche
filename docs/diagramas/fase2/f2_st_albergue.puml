@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+hide empty description
+skinparam state {
+ BackgroundColor white
+ BorderColor black
+}
+state "Activo" as Activo {
+  state "Con cupos" as Con
+  state "Sin cupos" as SinC
+  [*] --> Con
+  Con --> SinC : AsignacionAlbergue.asignar()\n[los cupos llegan a cero; RN-14]
+  SinC --> Con : AsignacionAlbergue.registrarSalida()\n[se liberan cupos; RN-14]
+  SinC --> Con : Albergue.actualizar(a)\n[aumenta la capacidad; RN-32]
+}
+[*] --> Activo : Albergue.crear(a)\n[capacidad > 0; RN-11]
+Activo --> Inactivo : Albergue.inactivar(idAlbergue)\n[sin hogares alojados; RN-31]
+Inactivo : conserva sus asignaciones (RN-27)
+@enduml

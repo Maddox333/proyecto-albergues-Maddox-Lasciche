@@ -1,0 +1,34 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Consulta el hogar por documento y
+solicita inactivarlo (MK-01);
+|Sistema|
+if (¿El hogar está alojado\nen un albergue? [RN-29]) then (sí)
+  :FA-01. «El hogar está alojado en [albergue].
+  Registre primero su salida.»;
+  stop
+else (no)
+endif
+:3. Muestra el aviso que explica qué deja
+de verse y qué se conserva (MK-07);
+|Funcionario|
+if (¿Confirma la inactivación?\n[RN-27]) then (no)
+  :FA-02. Cierra el aviso y el
+  hogar continúa activo;
+  stop
+else (sí)
+endif
+|Sistema|
+:5. Cambia el hogar a inactivo y conserva sus datos,
+integrantes e historial de entregas [RN-27, RN-34];
+stop
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+hide empty description
+skinparam state {
+ BackgroundColor white
+ BorderColor black
+}
+state "Activo" as Activo {
+  state "Sin albergue" as Sin
+  state "Alojado" as Alo
+  [*] --> Sin
+  Sin --> Alo : AsignacionAlbergue.asignar()\n[censado, activo y cupos ≥ N;\nRN-12, RN-13, RN-15, RN-34]
+  Alo --> Sin : AsignacionAlbergue.registrarSalida()\n[desde su albergue; RN-16]
+}
+[*] --> Activo : Hogar.crear(h)
+Sin --> Inactivo : Hogar.inactivar(idHogar)\n[no está alojado; RN-29]
+Inactivo : conserva integrantes e historial (RN-27)
+Inactivo : no admite asignaciones ni entregas (RN-34)
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+boundary "MK-04\nAsignar hogar" as V
+control "AlbergueControlador" as C
+entity ":Albergue" as Albergue
+entity ":AsignacionAlbergue" as AsignacionAlbergue
+entity ":Hogar" as Hogar
+database "BD" as DB
+F -> V : clic «Asignar a albergue» (MK-01)
+V -> C : «evento» Abrir asignación (CU-12)
+C -> Albergue : listarActivos()
+Albergue -> DB : SELECT … FROM ALBERGUE WHERE activo
+loop por cada albergue activo
+  C -> Albergue : ocupacionActual()
+  C -> Albergue : cuposDisponibles()
+end
+C --> V : albergues con capacidad, ocupación y cupos
+F -> V : selecciona el albergue y clic «Asignar»
+V -> C : «evento» Asignar (CU-12)
+note over C : hogar censado y activo; albergue activo\n[RN-12, RN-34] (FA-01, FA-02)
+C -> AsignacionAlbergue : albergueActual(idHogar)
+AsignacionAlbergue -> DB : SELECT … FROM ASIGNACION_ALBERGUE\nWHERE fecha_salida IS NULL
+AsignacionAlbergue --> C : albergue o nulo
+alt el hogar ya está alojado [RN-13]
+  C --> V : informa el albergue actual (FA-03)
+else sin albergue
+  C -> Hogar : totalIntegrantes()
+  Hogar --> C : N
+  C -> Albergue : cuposDisponibles()
+  Albergue --> C : cupos
+  alt cupos < N [RN-15]
+    C --> V : muestra los cupos disponibles (FA-04)
+  else cupos ≥ N
+    C -> AsignacionAlbergue : asignar(idHogar, idAlbergue)
+    AsignacionAlbergue -> DB : INSERT INTO ASIGNACION_ALBERGUE
+    C --> V : hogar asignado; ocupación +N\ny cupos −N [RN-14] (CA-13.1)
+  end
+end
+@enduml

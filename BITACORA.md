@@ -265,3 +265,24 @@ El guion se aplicó como formulario de preguntas cerradas en Microsoft Forms (60
 
 ---
 
+## Entrada #15 · Semana 15 (9 nov – 13 nov de 2026)
+
+**Commit:** Fase 2: modelo relacional, auditoría, actividades, DDA, secuencia, estados, matriz y lectura cruzada (CRF-02)
+
+**¿Qué hice?**
+- Fase 2: Diseño: modelo relacional, auditoría cruzada, actividades, DDA, secuencia, estados, matriz y lectura cruzada (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 2 presenciales + 4 autónomas = 6 h. Entrega o hito: Compuerta M2 aprobada (12 de noviembre) y entrega final (13 de noviembre).
+
+**Artefactos del commit:**
+- `docs/fase2-diseño/`
+- `docs/trazabilidad/02-matriz-completa.md`
+- `docs/trazabilidad/03-lectura-cruzada.md`
+- `docs/diagramas/fase2/`
+- `DECISIONES.md`
+- `docs/entregas/v1.1_Documento_Fases_0_1_y_2.docx`
+
+**¿Usé IA?** Sí. Se usó Claude (Anthropic) como apoyo para redactar, generar diagramas y código desde el modelo, y verificar la trazabilidad; el autor revisó y ajustó cada artefacto.
+
+---
+

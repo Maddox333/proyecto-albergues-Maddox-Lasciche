@@ -1,0 +1,42 @@
+@startuml
+!pragma useVerticalIf on
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam ActivityDiamondFontSize 13
+|Funcionario|
+start
+:1. Solicita asignar el hogar
+a un albergue (MK-01);
+|Sistema|
+:2. Presenta los albergues activos con
+capacidad, ocupación y cupos (MK-04);
+repeat
+  |Funcionario|
+  :3. Selecciona el albergue y confirma;
+  |Sistema|
+  if (¿Hogar censado?\n[RN-12]) then (no)
+    :FA-01. Indica que el hogar
+    debe estar censado;
+    stop
+  elseif (¿Hogar y albergue activos?\n[RN-34]) then (no)
+    :FA-02. Indica cuál está inactivo;
+    stop
+  elseif (¿Hogar ya alojado en\notro albergue? [RN-13]) then (sí)
+    :FA-03. Informa en qué
+    albergue se encuentra;
+    stop
+  elseif (¿Cupos disponibles ≥\nintegrantes del hogar? [RN-15]) then (no)
+    :FA-04. Muestra los cupos
+    disponibles del albergue;
+  else (sí)
+  endif
+repeat while (¿Cupos insuficientes?\n[RN-15]) is (sí: vuelve al paso 3) not (no)
+:7. Registra la asignación; la ocupación
+aumenta y los cupos disminuyen en el
+número de integrantes [RN-14];
+stop
+@enduml

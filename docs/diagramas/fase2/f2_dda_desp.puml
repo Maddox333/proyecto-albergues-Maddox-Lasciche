@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+left to right direction
+node "Teléfono o computador\ndel Funcionario o del Coordinador" as disp {
+  artifact "Navegador web\n(páginas MK)" as nav
+  database "Almacenamiento local\n(registros PENDIENTE)" as ls
+}
+node "Servidor de aplicaciones" as app {
+  artifact "Aplicación web Java\n(controlador + modelo)" as war
+}
+node "Servidor de base de datos" as srv {
+  database "MySQL\nbase albergues" as db
+}
+nav -- ls
+nav -- war : HTTPS
+war -- db : JDBC
+@enduml

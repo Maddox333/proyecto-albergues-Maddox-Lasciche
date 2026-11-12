@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+boundary "MK-01 / MK-07\nFicha del hogar" as V
+control "CensoControlador" as C
+entity ":AsignacionAlbergue" as AsignacionAlbergue
+entity ":Hogar" as Hogar
+database "BD" as DB
+F -> V : clic «Inactivar hogar» (MK-01)
+V -> C : «evento» Inactivar hogar (CU-28)
+C -> AsignacionAlbergue : albergueActual(idHogar)
+AsignacionAlbergue -> DB : SELECT … FROM ASIGNACION_ALBERGUE\nWHERE fecha_salida IS NULL
+AsignacionAlbergue --> C : albergue o nulo
+alt el hogar está alojado [RN-29]
+  C --> V : «El hogar está alojado en [albergue].\nRegistre primero su salida.» (FA-01)
+else sin albergue
+  C --> V : aviso de consecuencia (MK-07) [RN-27]
+  alt el Funcionario elige «No»
+    V --> F : cierra el aviso; el hogar sigue activo (FA-02)
+  else el Funcionario elige «Sí, inactivar»
+    V -> C : «evento» Confirmar inactivación (CU-28)
+    C -> Hogar : inactivar(idHogar)
+    Hogar -> DB : UPDATE HOGAR SET activo = FALSE
+    C --> V : hogar inactivo; datos, integrantes e\nhistorial conservados [RN-34] (CA-29.2)
+  end
+end
+@enduml

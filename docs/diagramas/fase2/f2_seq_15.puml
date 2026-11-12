@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam defaultFontName Liberation Sans
+skinparam defaultFontSize 13
+skinparam backgroundColor white
+skinparam dpi 170
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 6
+skinparam BoxPadding 4
+hide footbox
+autonumber 1
+actor "Funcionario" as F
+boundary "MK-05\nRegistrar donación" as V
+control "InventarioControlador" as C
+entity ":TipoAyuda" as TipoAyuda
+entity ":Donacion" as Donacion
+database "BD" as DB
+F -> V : clic «Registrar donación» (MK-10)
+V -> C : «evento» Abrir donación (CU-15)
+C -> TipoAyuda : listarActivos()
+TipoAyuda -> DB : SELECT … FROM TIPO_AYUDA WHERE activo
+TipoAyuda --> C : tipos de ayuda
+C --> V : formulario con la lista de tipos
+F -> V : selecciona el tipo, ingresa cantidad\ny origen; clic «Guardar»
+alt falta tipo u origen [RN-18], o cantidad ≤ 0 [RN-17]
+  V --> F : señala el dato (FA-01, FA-02)
+else datos válidos
+  V -> C : «evento» Guardar (CU-15)
+  C -> Donacion : registrar(d)
+  Donacion -> DB : INSERT INTO DONACION\n(fecha de recepción y usuario)
+  C -> TipoAyuda : existencias()
+  TipoAyuda -> DB : SUM(DONACION) − SUM(ENTREGA)
+  TipoAyuda --> C : existencias
+  C --> V : donación registrada y existencias\nactualizadas [RN-19, RN-20] (CA-16.1)
+end
+@enduml
