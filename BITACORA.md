@@ -286,3 +286,32 @@ Horas de la semana: 2 presenciales + 4 autónomas = 6 h. Entrega o hito: Compuer
 
 ---
 
+## Entrada #16 · Semana 15 (9 nov – 13 nov de 2026)
+
+**Commit:** Fase 3: script SQL, primer corte vertical en MVC (CU-01, CU-03 a CU-07) y gestión de la configuración (CRF-01)
+
+**¿Qué hice?**
+- Fase 3: Construcción: script SQL, repositorio Git y primer corte vertical en MVC (2 h presenciales + 4 h autónomas).
+
+Horas de la semana: 2 presenciales + 4 autónomas = 6 h. Entrega o hito: Compuerta M2 aprobada (12 de noviembre) y entrega final (13 de noviembre).
+
+**Artefactos del commit:**
+- `albergues_ddl.sql`
+- `datos_iniciales.sql`
+- `pom.xml`
+- `src/`
+- `docs/fase3-construccion/`
+- `docs/gestion-configuracion.md`
+- `README.md`
+- `docs/entregas/v1.2_Documento_Fases_0_a_3.docx`
+
+**¿Qué problema encontré?**
+La entrega final se adelantó del 20 al 13 de noviembre, y en la Fase 2 apareció un mensaje de secuencia (DS-04) que necesitaba un método más.
+
+**¿Cómo lo resolví?**
+CRF-01 ajustó el cronograma a 15 semanas y 180 horas; CRF-02 agregó el método al diagrama de clases. Ambas están en DECISIONES.md y en la sección 5.3.
+
+**¿Usé IA?** Sí. Se usó Claude (Anthropic) como apoyo para redactar, generar diagramas y código desde el modelo, y verificar la trazabilidad; el autor revisó y ajustó cada artefacto.
+
+---
+
